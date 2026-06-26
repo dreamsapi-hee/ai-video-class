@@ -276,15 +276,19 @@
       background: linear-gradient(135deg, #14532d, #0f766e 48%, #2563eb);
     }
 
-    .play {
-      display: grid;
-      width: 62px;
-      height: 62px;
-      place-items: center;
-      border: 2px solid rgba(255, 255, 255, 0.74);
+    .thumb-label {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.48);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.14);
-      font-size: 24px;
+      background: rgba(17, 24, 39, 0.36);
+      color: rgba(255, 255, 255, 0.94);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0;
     }
 
     .tag {
@@ -800,7 +804,7 @@
 
         <div class="showcase-grid">
           <article class="work-card">
-            <div class="work-thumb history" aria-label="역사 뮤직비디오 썸네일"><span class="play">▶</span></div>
+            <div class="work-thumb history" aria-label="역사 뮤직비디오 썸네일"><span class="thumb-label">역사 영상 사례</span></div>
             <div class="work-body">
               <span class="tag">성인 대상</span>
               <h3>역사 뮤직비디오</h3>
@@ -814,7 +818,7 @@
           </article>
 
           <article class="work-card">
-            <div class="work-thumb award" aria-label="수상작 썸네일"><span class="play">▶</span></div>
+            <div class="work-thumb award" aria-label="수상작 썸네일"><span class="thumb-label">공모전 입상작</span></div>
             <div class="work-body">
               <span class="tag">나의 수상작</span>
               <h3>AI 영상 수상작</h3>
@@ -829,7 +833,7 @@
           </article>
 
           <article class="work-card">
-            <div class="work-thumb career" aria-label="중학교 진로 영상 썸네일"><span class="play">▶</span></div>
+            <div class="work-thumb career" aria-label="중학교 진로 영상 썸네일"><span class="thumb-label">진로 수업 결과</span></div>
             <div class="work-body">
               <span class="tag">학교 수업 사례</span>
               <h3>중학교 진로 영상</h3>
