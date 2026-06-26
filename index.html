@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 영상 제작 교육 제안 | 역사·진로·뮤직비디오 포트폴리오</title>
+  <style>
+    :root {
+      --ink: #18212f;
+      --muted: #5b6575;
+      --line: #dde3ea;
+      --paper: #f7f8f5;
+      --cream: #fffaf0;
+      --blue: #2563eb;
+      --teal: #0f766e;
+      --rose: #be123c;
+      --gold: #b7791f;
+      --charcoal: #111827;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", system-ui, sans-serif;
+      line-height: 1.65;
+      background: var(--paper);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(221, 227, 234, 0.84);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 8px;
+      color: var(--white);
+      background: linear-gradient(135deg, var(--blue), var(--teal));
+      font-size: 16px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a {
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover {
+      background: #eef4ff;
+      color: var(--blue);
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: calc(100vh - 64px);
+      align-items: end;
+      color: var(--white);
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(9, 18, 34, 0.92) 0%, rgba(9, 18, 34, 0.68) 48%, rgba(9, 18, 34, 0.25) 100%),
+        url("assets/eulji-scene-sheet.png") center / cover no-repeat,
+        #172033;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 38%;
+      background: linear-gradient(transparent, rgba(247, 248, 245, 0.96));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      padding: 86px 0 112px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: #d7f5ef;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: #5eead4;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin: 0;
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      max-width: 760px;
+      font-size: clamp(40px, 7vw, 76px);
+      font-weight: 900;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin: 24px 0 0;
+      color: #edf5ff;
+      font-size: clamp(17px, 2.1vw, 21px);
+      font-weight: 500;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 18px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      font-weight: 800;
+      line-height: 1.2;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: var(--charcoal);
+      background: #fef3c7;
+    }
+
+    .btn-secondary {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.42);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    section {
+      padding: 84px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+      align-items: end;
+      gap: 32px;
+      margin-bottom: 34px;
+    }
+
+    .label {
+      margin: 0 0 10px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 46px);
+      font-weight: 900;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .work-card {
+      display: flex;
+      min-height: 430px;
+      flex-direction: column;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      overflow: hidden;
+      box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
+    }
+
+    .work-thumb {
+      position: relative;
+      display: grid;
+      min-height: 185px;
+      place-items: center;
+      color: var(--white);
+      background: var(--charcoal);
+      overflow: hidden;
+    }
+
+    .work-thumb.history {
+      background:
+        linear-gradient(rgba(15, 23, 42, 0.24), rgba(15, 23, 42, 0.78)),
+        url("assets/eulji-scene-sheet.png") center / cover no-repeat;
+    }
+
+    .work-thumb.award {
+      background: linear-gradient(135deg, #7f1d1d, #b7791f 54%, #164e63);
+    }
+
+    .work-thumb.career {
+      background: linear-gradient(135deg, #14532d, #0f766e 48%, #2563eb);
+    }
+
+    .play {
+      display: grid;
+      width: 62px;
+      height: 62px;
+      place-items: center;
+      border: 2px solid rgba(255, 255, 255, 0.74);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.14);
+      font-size: 24px;
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: 14px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      color: var(--teal);
+      background: #dff7f1;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .work-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 22px;
+    }
+
+    .work-body h3 {
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .work-body p {
+      margin: 12px 0 18px;
+      color: var(--muted);
+    }
+
+    .link-slot {
+      margin-top: auto;
+      padding: 12px;
+      border: 1px dashed #b9c4d0;
+      border-radius: 8px;
+      color: #475569;
+      background: #f8fafc;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .link-group {
+      display: grid;
+      gap: 8px;
+      margin-top: auto;
+    }
+
+    .link-group .link-slot {
+      margin-top: 0;
+      border-style: solid;
+      color: #0f3f7a;
+      background: #eef6ff;
+    }
+
+    .link-group .link-slot:hover {
+      border-color: #2563eb;
+      color: #1d4ed8;
+      background: #dbeafe;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: -40px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--charcoal);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .overview {
+      background: var(--white);
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .info {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+    }
+
+    .info b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 14px;
+    }
+
+    .info p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .program-table {
+      width: 100%;
+      margin-top: 28px;
+      border-collapse: collapse;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .program-table th,
+    .program-table td {
+      padding: 15px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .program-table th {
+      width: 170px;
+      color: #334155;
+      background: #f1f5f9;
+      font-weight: 900;
+    }
+
+    .program-table tr:last-child th,
+    .program-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .themes {
+      background: #eef4f1;
+    }
+
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .theme {
+      padding: 24px;
+      border: 1px solid rgba(15, 118, 110, 0.18);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .theme h3 {
+      font-size: 24px;
+    }
+
+    .theme-meta {
+      display: grid;
+      gap: 8px;
+      margin: 18px 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .theme-meta span {
+      display: flex;
+      gap: 8px;
+    }
+
+    .theme-meta b {
+      min-width: 74px;
+      color: var(--charcoal);
+    }
+
+    .theme ul,
+    .flow-list,
+    .check-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .theme li {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .flow {
+      background: var(--white);
+    }
+
+    .flow-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      counter-reset: step;
+    }
+
+    .flow-list li {
+      position: relative;
+      min-height: 110px;
+      padding: 20px 16px 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfe;
+      font-weight: 800;
+    }
+
+    .flow-list li::before {
+      counter-increment: step;
+      content: counter(step);
+      display: grid;
+      width: 28px;
+      height: 28px;
+      margin-bottom: 14px;
+      place-items: center;
+      border-radius: 999px;
+      color: var(--white);
+      background: var(--blue);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .tools {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .tool-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tool {
+      display: grid;
+      grid-template-columns: 116px 1fr;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .tool b {
+      color: var(--teal);
+    }
+
+    .tool span {
+      color: var(--muted);
+    }
+
+    .note {
+      padding: 24px;
+      border-left: 5px solid var(--gold);
+      border-radius: 8px;
+      background: var(--cream);
+    }
+
+    .note p {
+      margin: 0;
+      color: #5a4631;
+      font-weight: 700;
+    }
+
+    .prepare {
+      background: #f8fafc;
+    }
+
+    .check-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .check-card {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+
+    .check-card h3 {
+      margin-bottom: 14px;
+      font-size: 22px;
+    }
+
+    .check-list li {
+      position: relative;
+      padding: 9px 0 9px 24px;
+      color: var(--muted);
+      border-top: 1px solid #edf1f5;
+    }
+
+    .check-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 19px;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--teal);
+    }
+
+    .outcomes {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .outcomes .label {
+      color: #7dd3fc;
+    }
+
+    .outcomes .lead {
+      color: #cbd5e1;
+    }
+
+    .outcome-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .outcome {
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #e5edf7;
+      font-weight: 700;
+    }
+
+    .cta {
+      padding: 70px 0;
+      background: var(--white);
+    }
+
+    .cta-box {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      padding: 32px;
+      border-radius: 8px;
+      color: var(--white);
+      background: linear-gradient(135deg, #1d4ed8, #0f766e);
+    }
+
+    .cta-box h2 {
+      font-size: clamp(26px, 3vw, 38px);
+    }
+
+    .cta-box p {
+      margin: 12px 0 0;
+      color: #e8f7ff;
+    }
+
+    footer {
+      padding: 28px 0;
+      color: var(--muted);
+      background: #f8fafc;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+      .section-head,
+      .tools,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase-grid,
+      .theme-grid,
+      .check-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats,
+      .flow-list,
+      .outcome-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero {
+        min-height: 720px;
+        background-position: center top;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap {
+        width: min(100% - 24px, 1120px);
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .hero-inner {
+        padding: 62px 0 94px;
+      }
+
+      .stats,
+      .flow-list,
+      .outcome-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .program-table,
+      .program-table tbody,
+      .program-table tr,
+      .program-table th,
+      .program-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .program-table th {
+        border-bottom: 0;
+      }
+
+      .tool {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="wrap nav" aria-label="주요 메뉴">
+      <a class="brand" href="#top">
+        <span class="brand-mark">AI</span>
+        <span>AI 영상 제작 교육 제안</span>
+      </a>
+      <div class="nav-links">
+        <a href="#portfolio">대표 영상</a>
+        <a href="#program">프로그램</a>
+        <a href="#themes">운영안</a>
+        <a href="#tools">도구</a>
+        <a href="#prepare">준비물</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="AI 영상 제작 교육 소개">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">역사·문화·진로를 영상으로 표현하는 AI 창작 수업</p>
+        <h1>AI로 만드는 우리 이야기 영상 제작 프로젝트</h1>
+        <p class="hero-copy">
+          성인 대상 역사 뮤직비디오, 수상작 포트폴리오, 중학교 진로 영상 수업 사례를 바탕으로
+          초등 고학년 학생들이 직접 기획하고 완성하는 4회차 AI 영상 제작 프로그램입니다.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#portfolio">대표 영상 보기</a>
+          <a class="btn btn-secondary" href="https://drive.google.com/file/d/1EjN6KQW6OmBMUtSxq9OLGOXjkbc74roa/view?usp=sharing" target="_blank" rel="noopener">학습계획표</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap stats" aria-label="프로그램 핵심 정보">
+      <div class="stat"><strong>4~6</strong><span>초등 고학년 대상</span></div>
+      <div class="stat"><strong>4회</strong><span>주제별 프로젝트 수업</span></div>
+      <div class="stat"><strong>1~3분</strong><span>최종 AI 영상 결과물</span></div>
+      <div class="stat"><strong>3개</strong><span>명절·광복절·진로 주제</span></div>
+    </div>
+
+    <section id="portfolio">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="label">Portfolio</p>
+            <h2>수업 신뢰도를 보여주는 대표 영상</h2>
+          </div>
+          <p class="lead">
+            실제 공유 전 영상 URL만 연결하면 바로 포트폴리오 페이지로 사용할 수 있습니다.
+            교육 대상과 목적이 다른 사례를 함께 보여주어 수업 확장성을 전달합니다.
+          </p>
+        </div>
+
+        <div class="showcase-grid">
+          <article class="work-card">
+            <div class="work-thumb history" aria-label="역사 뮤직비디오 썸네일"><span class="play">▶</span></div>
+            <div class="work-body">
+              <span class="tag">성인 대상</span>
+              <h3>역사 뮤직비디오</h3>
+              <p>역사적 장면과 음악, 내레이션을 결합해 성인 학습자도 몰입할 수 있는 스토리형 영상 콘텐츠입니다.</p>
+              <p>이 영상들은 성인 대상 수업에서 진행되었으며, 2시간 안에 기획부터 제작까지 완성한 결과물입니다.</p>
+              <div class="link-group">
+                <a class="link-slot" href="https://drive.google.com/file/d/1t-BFcuoG6b4uX4fDuGsIuxZfTPOVZgmD/view?usp=drive_link" target="_blank" rel="noopener">역사 뮤직드라마 1 보기</a>
+                <a class="link-slot" href="https://drive.google.com/file/d/1dZI5hSeE3G7Wh9eM3MlKm1Gj9R7RIU9g/view?usp=sharing" target="_blank" rel="noopener">역사 뮤직드라마 2 보기</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-thumb award" aria-label="수상작 썸네일"><span class="play">▶</span></div>
+            <div class="work-body">
+              <span class="tag">나의 수상작</span>
+              <h3>AI 영상 수상작</h3>
+              <p>매경 AI 공모전, 성남시 저출생 인식개선 공모전, 성남시 중독방지센터 공모전에서 입상한 AI 영상 작품입니다.</p>
+              <div class="link-group">
+                <a class="link-slot" href="https://drive.google.com/file/d/1-ggAZAz4IBQDGJE0zj2JPhXCmNyuo6NT/view?usp=drive_link" target="_blank" rel="noopener">수상작 1 보기</a>
+                <a class="link-slot" href="https://drive.google.com/file/d/1Uj-xEO1-Z-yywY_Y4rZHwjy7EH-Dc_l-/view?usp=drive_link" target="_blank" rel="noopener">수상작 2 보기</a>
+                <a class="link-slot" href="https://drive.google.com/file/d/1qq7UEqqLR179OtgtCck9HRKMhuzeHQ0x/view?usp=drive_link" target="_blank" rel="noopener">수상작 3 보기</a>
+                <a class="link-slot" href="https://drive.google.com/file/d/1NInA4T-IsN1MHyzWMoVHM4QXYl2fRH5B/view?usp=drive_link" target="_blank" rel="noopener">수상작 4 보기</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card">
+            <div class="work-thumb career" aria-label="중학교 진로 영상 썸네일"><span class="play">▶</span></div>
+            <div class="work-body">
+              <span class="tag">학교 수업 사례</span>
+              <h3>중학교 진로 영상</h3>
+              <p>학생들이 Canva에서 원하는 캐릭터를 만들고, 자신이 구상한 이미지와 장면을 활용해 간단한 진로 영상을 제작한 수업 사례입니다.</p>
+              <div class="link-group">
+                <a class="link-slot" href="https://drive.google.com/file/d/1rMwxCYXK2wqVnZfBf7YLe0Qafb3c8w6J/view?usp=drive_link" target="_blank" rel="noopener">진로 수업 영상 1 보기</a>
+                <a class="link-slot" href="https://drive.google.com/file/d/1Onig960VbuLuLYJNGzHWtofDgvWiLthj/view?usp=drive_link" target="_blank" rel="noopener">진로 수업 영상 2 보기</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="program" class="overview">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="label">Program Overview</p>
+            <h2>프로그램 개요</h2>
+          </div>
+          <p class="lead">
+            AI 도구 체험에 그치지 않고 질문하기, 이야기 만들기, 장면 상상하기,
+            영상으로 표현하기, 발표하기까지 연결하는 프로젝트형 수업입니다.
+          </p>
+        </div>
+
+        <div class="info-grid">
+          <div class="info"><b>프로그램명</b><p>AI로 만드는 우리 이야기 영상 제작 프로젝트</p></div>
+          <div class="info"><b>대상</b><p>초등 고학년 4~6학년</p></div>
+          <div class="info"><b>운영 형태</b><p>주제별 4회차 프로젝트 수업</p></div>
+        </div>
+
+        <table class="program-table">
+          <tbody>
+            <tr><th>수업 시간</th><td>1회 2시간, 총 4회차</td></tr>
+            <tr><th>운영 주제</th><td>명절 유래, 광복절, 진로 탐색</td></tr>
+            <tr><th>최종 결과물</th><td>1~3분 내외 AI 영상 또는 발표용 영상 콘텐츠</td></tr>
+            <tr><th>수업 방식</th><td>주제 이해 → 대본 작성 → 장면 생성 → 영상 편집 → 발표</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="flow">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="label">Learning Goals</p>
+            <h2>교육 목표와 공통 흐름</h2>
+          </div>
+          <p class="lead">
+            학생들은 AI 결과물을 그대로 믿지 않고 확인하고 수정하는 디지털 리터러시를 함께 배웁니다.
+          </p>
+        </div>
+
+        <ol class="flow-list">
+          <li>주제 이해하기</li>
+          <li>내가 만들 이야기 정하기</li>
+          <li>AI에게 질문하고 대본 만들기</li>
+          <li>장면별 스토리보드 작성하기</li>
+          <li>이미지·영상 프롬프트 만들기</li>
+          <li>AI로 장면 생성하기</li>
+          <li>Vrew로 간단한 영상 편집하기</li>
+          <li>완성작 발표 및 감상하기</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="themes" class="themes">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="label">Curriculum</p>
+            <h2>주제별 4회차 운영안</h2>
+          </div>
+          <p class="lead">
+            기관 일정과 교육 목적에 맞춰 한 가지 주제를 선택하거나, 계절 행사와 연계해 운영할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="theme-grid">
+          <article class="theme">
+            <h3>AI로 만드는 우리 명절 이야기</h3>
+            <div class="theme-meta">
+              <span><b>주제</b> 명절 유래</span>
+              <span><b>추천 시기</b> 8월 또는 추석 전후</span>
+              <span><b>핵심 질문</b> 우리는 왜 명절을 지낼까?</span>
+              <span><b>결과물</b> 명절의 유래와 의미를 담은 짧은 AI 영상</span>
+            </div>
+            <ul>
+              <li>1회차: 명절은 왜 생겼을까?</li>
+              <li>2회차: 명절 이야기를 장면으로 나누기</li>
+              <li>3회차: AI로 명절 장면 만들기</li>
+              <li>4회차: 영상 편집과 발표</li>
+            </ul>
+          </article>
+
+          <article class="theme">
+            <h3>AI로 되살리는 광복절 이야기</h3>
+            <div class="theme-meta">
+              <span><b>주제</b> 광복절</span>
+              <span><b>추천 시기</b> 8월</span>
+              <span><b>핵심 질문</b> 광복은 우리에게 어떤 의미일까?</span>
+              <span><b>결과물</b> 광복절의 의미를 담은 역사 스토리 영상</span>
+            </div>
+            <ul>
+              <li>1회차: 광복절은 어떤 날일까?</li>
+              <li>2회차: 역사 이야기를 영상 대본으로 만들기</li>
+              <li>3회차: AI로 역사 장면 표현하기</li>
+              <li>4회차: 광복절 메시지 영상 완성하기</li>
+            </ul>
+          </article>
+
+          <article class="theme">
+            <h3>AI로 만드는 나의 미래 직업 영상</h3>
+            <div class="theme-meta">
+              <span><b>주제</b> 진로 탐색</span>
+              <span><b>추천 시기</b> 10월</span>
+              <span><b>핵심 질문</b> 나는 어떤 미래를 만들고 싶을까?</span>
+              <span><b>결과물</b> 나의 미래 직업을 소개하는 AI 진로 영상</span>
+            </div>
+            <ul>
+              <li>1회차: 나의 관심사와 미래 직업 찾기</li>
+              <li>2회차: 미래의 나를 이야기로 만들기</li>
+              <li>3회차: AI로 미래 직업 장면 만들기</li>
+              <li>4회차: 나의 미래 직업 영상 발표회</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools">
+      <div class="wrap tools">
+        <div>
+          <p class="label">Tools</p>
+          <h2>사용 도구</h2>
+          <p class="lead">
+            기관의 계정, 보안, 비용 환경에 따라 Google Flow 중심 또는 Canva·Vrew 중심으로 대체 운영할 수 있습니다.
+          </p>
+          <div class="note" style="margin-top: 24px;">
+            <p>Google Flow는 계정 조건, 사용 정책, 비용 정책이 변경될 수 있으므로 수업 전 사전 확인이 필요합니다.</p>
+          </div>
+        </div>
+        <div class="tool-list">
+          <div class="tool"><b>ChatGPT</b><span>아이디어 정리, 대본 작성, 프롬프트 작성</span></div>
+          <div class="tool"><b>Gemini</b><span>자료 탐색, 아이디어 확장, 장면 설명문 작성</span></div>
+          <div class="tool"><b>Google Flow</b><span>장면별 짧은 AI 영상 클립 제작</span></div>
+          <div class="tool"><b>Canva</b><span>제목 화면, 썸네일, 발표용 이미지 구성</span></div>
+          <div class="tool"><b>Vrew</b><span>영상 편집, 자막, 내레이션, 음악 정리</span></div>
+          <div class="tool"><b>Google Drive</b><span>학생 결과물 저장 및 공유</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prepare" class="prepare">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="label">Preparation</p>
+            <h2>준비물과 사전 확인 사항</h2>
+          </div>
+          <p class="lead">
+            수업 전 접속 환경과 결과물 제출 방식을 확인하면 4회차 안에서 기획부터 발표까지 안정적으로 진행할 수 있습니다.
+          </p>
+        </div>
+
+        <div class="check-grid">
+          <article class="check-card">
+            <h3>기관 준비물</h3>
+            <ul class="check-list">
+              <li>실습용 PC 또는 노트북</li>
+              <li>강사용 PC와 빔프로젝터</li>
+              <li>안정적인 인터넷 환경</li>
+              <li>AI 도구 접속 가능 여부 확인</li>
+              <li>이어폰 또는 헤드셋, 발표용 스피커</li>
+            </ul>
+          </article>
+
+          <article class="check-card">
+            <h3>학생 준비물</h3>
+            <ul class="check-list">
+              <li>구글 계정 사용 가능 여부</li>
+              <li>이어폰과 필기도구</li>
+              <li>개인 관심 주제 구상</li>
+              <li>구글 드라이브 또는 기관 지정 저장 공간</li>
+            </ul>
+          </article>
+
+          <article class="check-card">
+            <h3>강사 준비물</h3>
+            <ul class="check-list">
+              <li>수업용 슬라이드와 예시 자료</li>
+              <li>대본·스토리보드 활동지</li>
+              <li>프롬프트 예시와 샘플 영상</li>
+              <li>Canva·Vrew 중심 대체 실습안</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="outcomes">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="label">Expected Outcomes</p>
+            <h2>기대 효과</h2>
+          </div>
+          <p class="lead">
+            완성된 영상 결과물을 통해 학생의 성취감, 자기표현 능력, 디지털 창작 역량을 함께 높입니다.
+          </p>
+        </div>
+
+        <div class="outcome-grid">
+          <div class="outcome">AI를 창작과 표현의 도구로 경험</div>
+          <div class="outcome">교육적 주제를 학생 눈높이에 맞게 이해</div>
+          <div class="outcome">글쓰기, 자료 이해, 장면 구성 능력 향상</div>
+          <div class="outcome">AI 결과물을 확인하고 수정하는 리터러시</div>
+          <div class="outcome">발표와 감상을 통한 성취감 형성</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="cta-box">
+          <div>
+            <h2>기관 환경에 맞춰 바로 운영 가능한 AI 영상 제작 수업</h2>
+            <p>긴 영상보다 1~3분 내외의 짧은 완성작을 목표로 하여, 4회차 안에서 기획·대본·장면 생성·편집·발표를 모두 경험합니다.</p>
+          </div>
+          <a class="btn btn-primary" href="#portfolio">영상 사례로 돌아가기</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">AI 영상 제작 교육 제안 페이지 · 영상 링크와 연락처를 연결하면 바로 공유용 페이지로 사용할 수 있습니다.</div>
+  </footer>
+</body>
+</html>
